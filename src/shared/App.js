@@ -6,14 +6,16 @@ import { history } from "../redux/configureStore";
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 
+import Flex from '../elements/Flex';
+
 function App() {
   return (
-    <div className="App">
+    <Flex fd="column" width="100vw" height="100vh">
       <ConnectedRouter history={history}> 
-        <Route path="/" exact component={Home}></Route>
         <Route path="/login" exact component={Login}></Route>
+        <Route path="/main" exact component={Home}></Route>
       </ConnectedRouter>
-    </div>
+    </Flex>
   );
 }
 
