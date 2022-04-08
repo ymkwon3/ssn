@@ -3,7 +3,7 @@ import React from "react";
 const Home = props => {
   return (
     <>
-      <div>home입니다</div>
+      <div>두번째테스트입니다</div>
     </>
   );
 };
