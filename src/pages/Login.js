@@ -1,11 +1,18 @@
 import React from "react";
-import styled from "styled-components";
 
 import Flex from "../elements/Flex";
 import Input from "../elements/Input";
 import Button from "../elements/Button";
 
+import { actionCreators as userActions } from "../redux/modules/user";
+import { useDispatch } from "react-redux";
+
 const Login = props => {
+  const dispatch = useDispatch();
+  const loginBtn = () => {
+    dispatch(userActions.loginMD("id", "pwd"));
+  }
+
   return (
     <>
       <Flex fd="column" border="2px solid black" width="400px" height="400px" gap="50px">
@@ -19,7 +26,7 @@ const Login = props => {
           label={"PW"}
         ></Input>
         <Flex margin="4px" padding="4px">
-          <Button>로그인</Button>
+          <Button _onClick={() => loginBtn()}>로그인</Button>
           <Button>회원가입</Button>
         </Flex>
       </Flex>

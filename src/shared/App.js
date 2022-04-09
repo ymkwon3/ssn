@@ -2,6 +2,7 @@ import "./App.css";
 import { ConnectedRouter } from "connected-react-router";
 import { Route } from "react-router-dom";
 import { history } from "../redux/configureStore";
+import { useDispatch, useSelector } from "react-redux";
 
 import Login from "../pages/Login";
 
@@ -13,6 +14,11 @@ import User from "../components/User";
 import SideNav from "../components/SideNav";
 
 function App() {
+  const dispatch = useDispatch();
+
+  // 나중에 로그인 관련 세션?이 추가되면 그쪽으로 바꿔야 될듯 -영민
+  const userinfo = useSelector(state => state.user.userinfo);
+
   return (
     <Flex fd="column" width="100vw" height="100vh">
       <ConnectedRouter history={history}>
@@ -29,12 +35,13 @@ function App() {
             </Permit>
 
             {/*Content*/}
+            <Route path="/" exact component={() => <Main userinfo={userinfo}/>}></Route>
+            <Route path="/userid" exact component={() => <User userinfo={userinfo}/>}></Route>
             <Route path="/login" exact component={Login}></Route>
-            <Route path="/" exact component={Main}></Route>
-            <Route path="/test" exact component={User}></Route>
             {/* <Main/> */}
           </Flex>
         </Flex>
+
       </ConnectedRouter>
     </Flex>
   );
