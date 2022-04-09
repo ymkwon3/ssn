@@ -31,7 +31,7 @@ function App() {
             {/*Content*/}
             <Route path="/login" exact component={Login}></Route>
             <Route path="/" exact component={Main}></Route>
-            <Route path="/test" exact component={User}></Route>
+            <Route path="/userid" exact component={User}></Route>
             {/* <Main/> */}
           </Flex>
         </Flex>
