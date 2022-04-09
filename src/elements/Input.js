@@ -7,7 +7,7 @@ const Input = props => {
         width, 
         height, 
         type, 
-        placeholder, 
+        ph, 
         padding, 
         value,
         label,
@@ -18,23 +18,26 @@ const Input = props => {
         width: width,
         height: height,
         type: type,
-        placeholder: placeholder,
+        placeholder: ph,
         padding: padding,
+        label: label,
         // 있는 정보를 가져오기 위한
     };
     return (
         <InputStyle 
             {...styles}
             type = {type}
-            placeholder = {placeholder}
+            ph = {ph}
         />
     );
 };
 
 Input.defaultProps = {
-    width: "250px",
-    // ""안에 넣는이유? defaultProps값은 
+    width: "270px",
+    // ""안에 넣는이유? defaultProps값은 스타일값이 아니여서 
+    height: "20px",
     type: "text",
+    padding: "0",
 }
 
 const InputStyle = styled.input`
