@@ -19,7 +19,7 @@ const Button = props => {
   };
 
   return (
-    <Buttonstyle {...styles} onClick={() => _onClick}>
+    <Buttonstyle {...styles} onClick={() => _onClick()}>
       {children}
     </Buttonstyle>
   );
