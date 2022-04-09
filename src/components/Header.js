@@ -5,10 +5,19 @@ import { history } from "../redux/configureStore";
 import Button from "../elements/Button"
 import CircleImage from "../elements/CircleImage"
 import Input from "../elements/Input"
+import { useDispatch } from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
+
 
 const Header = props => {
+  const dispatch = useDispatch();
+  const logoutBtn = () => {
+    dispatch(userActions.logout());
+    history.push("/login")
+  }
+
   return (
-    <Flex margin="20px auto " padding="10px" jc="space-between" border-bottom="1px solid black">
+    <Flex margin="20px auto " padding="10px" jc="space-between" border="1px solid black">
       <CircleImage></CircleImage>
       <Input
         width="400px"
@@ -19,13 +28,13 @@ const Header = props => {
         width="200px" 
         height="50px"
         margin="0 -220px 0 0"
-        onClick={() => history.push("/userid")}
+        _onClick={() => history.push("/userid")}
       >방명록</Button>
       <Button 
         width="200px" 
         height="50px"
         margin="0 20px 0 0"
-        onClick={() => history.push("/userid")}
+        _onClick={() => logoutBtn()}
       >로그아웃</Button>
     </Flex>
   );
