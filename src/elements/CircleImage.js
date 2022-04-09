@@ -5,9 +5,9 @@ const CircleImage = props => {
     const { shape, src, size } = props;
   
     const styles = {
-        shape: shape,
-        src: src,
-        size: size,
+        shape,
+        src,
+        size,
     }
     
     return (

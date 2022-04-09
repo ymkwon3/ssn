@@ -14,9 +14,10 @@ const Login = props => {
           label={"ID"}
         ></Input>
         <Input
-          
+          ph={"비밀번호를 입력해 주세요!"}
+          label={"PW"}
         ></Input>
-        <Flex>
+        <Flex margin="4px" padding="4px">
           <Button>로그인</Button>
           <Button>회원가입</Button>
         </Flex>
