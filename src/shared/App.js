@@ -3,13 +3,14 @@ import { ConnectedRouter } from "connected-react-router";
 import { Route } from "react-router-dom";
 import { history } from "../redux/configureStore";
 
-import Home from "../pages/Home";
 import Login from "../pages/Login";
 
 import Flex from "../elements/Flex";
+import Header from "../components/Header";
 import Main from "../components/Main";
 import Permit from "./Permit";
 import User from "../components/User";
+import SideNav from "../components/SideNav";
 
 function App() {
   return (
@@ -18,18 +19,13 @@ function App() {
         <Flex width="100%" height="100%" fd="column" jc="start" ai="start">
           <Permit>
             {/*Header*/}
-            <Flex width="100%" height="100px" border="1px solid black">
-              <div>버튼1</div>
-              <div>버튼2</div>
-            </Flex>
+            <Header></Header>
           </Permit>
 
           <Flex height="100%">
             <Permit>
               {/*SideNav*/}
-              <Flex width="200px" height="100%" border="1px solid red">
-                123123
-              </Flex>
+              <SideNav></SideNav>
             </Permit>
 
             {/*Content*/}
