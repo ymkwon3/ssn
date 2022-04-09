@@ -4,13 +4,28 @@ import styled from "styled-components";
 const Flex = props => {
   // fd: flex-direction, jc: justify-content, ai: align-items, bg: background-color -영민
   // trbl is a list with top, right, bottom, left properties in order -영민
-  const { width, height, margin, padding, border, position, trbl, fd, jc, ai, bg, children } = props;
+  const {
+    width,
+    height,
+    margin,
+    padding,
+    border,
+    gap,
+    position,
+    trbl,
+    fd,
+    jc,
+    ai,
+    bg,
+    children,
+  } = props;
   const styles = {
     width,
     height,
     margin,
     padding,
     border,
+    gap,
     position,
     trbl,
     fd,
@@ -27,6 +42,7 @@ Flex.defaultProps = {
   margin: "",
   padding: "",
   border: "none",
+  gap: "",
   position: "static",
   trbl: ["", "", "", ""],
   fd: "row",
@@ -41,6 +57,7 @@ const FlexDiv = styled.div`
   margin: ${props => props.margin};
   padding: ${props => props.padding};
   border: ${props => props.border};
+  gap: ${props => props.gap};
   position: ${props => props.position};
   top: ${props => props.trbl[0]};
   right: ${props => props.trbl[1]};

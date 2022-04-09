@@ -8,7 +8,7 @@ import Button from "../elements/Button";
 const Login = props => {
   return (
     <>
-      <Flex fd="column" border="2px solid black" width="400px" height="400px">
+      <Flex fd="column" border="2px solid black" width="400px" height="400px" gap="50px">
         
         <Input
           ph={"아이디를 입력해 주세요!"}
