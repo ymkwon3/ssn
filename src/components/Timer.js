@@ -6,7 +6,6 @@ const Timer = props => {
   const now = moment();
   const [time, setTime] = React.useState(now.format("HH:mm:ss"));
 
-  console.log()
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(now.add(1, "seconds").format("HH:mm:ss"));

@@ -7,10 +7,11 @@ export const RESP = {
       userinfo: {
         userid: "testid1",
         nickname: "testname1",
-        user_image:
+        userimage:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR20IORmNDNcRa_FOEBKPVI3ano6fLVIiJB_g&usqp=CAU",
         friends: ["testid2", "testid3"],
-        totaltime: "10시간 20분",
+        totaltime: 1000,
+        yestime: 120,
         starttime: "2022-04-09 10:00:00",
         connecting: false,
       },
@@ -22,10 +23,10 @@ export const RESP = {
       testid1: {
         userid: "testid1",
         nickname: "testname1",
-        user_image:
+        userimage:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR20IORmNDNcRa_FOEBKPVI3ano6fLVIiJB_g&usqp=CAU",
         friends: ["testid2", "testid3"],
-        totaltime: "10시간 20분",
+        totaltime: 1000,
         starttime: "2022-04-09 10:00:00",
         connecting: false,
       },
@@ -35,7 +36,8 @@ export const RESP = {
         user_image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR20IORmNDNcRa_FOEBKPVI3ano6fLVIiJB_g&usqp=CAU",
         friends: ["testid1"],
-        totaltime: "10시간 20분",
+        totaltime: 1000,
+        yestime: 120,
         starttime: "2022-04-09 10:00:00",
         connecting: false,
       },
@@ -45,7 +47,8 @@ export const RESP = {
         user_image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR20IORmNDNcRa_FOEBKPVI3ano6fLVIiJB_g&usqp=CAU",
         friends: ["testid2"],
-        totaltime: "10시간 20분",
+        totaltime: 1000,
+        yestime: 120,
         starttime: "2022-04-09 10:00:00",
         connecting: false,
       },
