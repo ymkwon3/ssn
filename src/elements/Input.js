@@ -14,13 +14,13 @@ const Input = props => {
     } = props;
     
     const styles = {
-        margin: margin,
-        width: width,
-        height: height,
-        type: type,
+        margin,
+        width,
+        height,
+        type,
         placeholder: ph,
-        padding: padding,
-        label: label,
+        padding,
+        label,
         // 있는 정보를 가져오기 위한
     };
     return (
@@ -43,6 +43,7 @@ Input.defaultProps = {
 const InputStyle = styled.input`
     width: ${props => props.width};
     padding: ${props => props.padding};
+    height: ${props => props.height};
 `;
 
 export default Input;

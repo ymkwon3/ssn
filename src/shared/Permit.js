@@ -6,5 +6,6 @@ const Permit = props => {
   }
   return <></>
 };
+//로그인 유무에 따라 true false 줄 예정
 
 export default Permit;
