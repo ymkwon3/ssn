@@ -1,13 +1,18 @@
 import React from "react";
 import Flex from "../elements/Flex";
+import Timer from "./Timer";
+
+import { history } from "../redux/configureStore";
+import Rank from "./Rank";
+
 
 const Main = props => {
   return (
     <Flex border="2px solid blue" height="100%" fd="column" jc="space-around">
-      <Flex>타이머</Flex>
-      <Flex>출석체크버튼</Flex>
-      <Flex>총공부시간 / 어제 몇시간 했네~</Flex>
-      <Flex>2등 1등 3등</Flex>
+      <Timer></Timer>
+      <Flex border="2px solid green"><button>출석체크</button></Flex>
+      <Flex border="2px solid purple">총공부시간 / 어제 몇시간 했네~</Flex>
+      <Flex border="2px solid orange"><Rank></Rank><Rank></Rank><Rank></Rank></Flex>
     </Flex>
   );
 };
