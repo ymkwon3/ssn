@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import Flex from "../elements/Flex";
 import Input from "../elements/Input";

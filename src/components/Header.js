@@ -1,5 +1,6 @@
 import React from "react";
 import Flex from "../elements/Flex";
+import { history } from "../redux/configureStore";
 
 import Button from "../elements/Button"
 import CircleImage from "../elements/CircleImage"
@@ -18,11 +19,13 @@ const Header = props => {
         width="200px" 
         height="50px"
         margin="0 -220px 0 0"
+        onClick={() => history.push("/userid")}
       >방명록</Button>
       <Button 
         width="200px" 
         height="50px"
         margin="0 20px 0 0"
+        onClick={() => history.push("/userid")}
       >로그아웃</Button>
     </Flex>
   );

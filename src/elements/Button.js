@@ -17,7 +17,7 @@ const Button = props => {
     left,
     ai,
   };
-  
+
   return (
     <Buttonstyle {...styles} onClick={() => _onClick}>
       {children}
