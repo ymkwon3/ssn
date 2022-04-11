@@ -30,7 +30,7 @@ const loginMD = (id, pwd) => {
     // const userinfo = await axios.post('url', {id: id, password: pwd}).then();
 
     dispatch(setUser(userinfo));
-    history.replace("/");
+    history.push("/");
   };
 };
 
