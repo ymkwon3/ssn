@@ -7,7 +7,6 @@ import FriendsInfo from "./FriendsInfo";
 
 const SideNav = props => {
   const friendsinfo = useSelector(state => state.user.friendsinfo);
-  console.log(friendsinfo);
   return (
     <Flex fd="column" width="200px" height="100%" border="1px solid red">
       {friendsinfo.map((v, i) => (
