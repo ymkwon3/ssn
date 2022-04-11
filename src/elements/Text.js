@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 const Text = props => {
-  const {fontSize, fontWeight, color, userSelect, children, display} = props;
+  const {margin, fS, fW, color, userSelect, children} = props;
   const styles = {
-    fontSize,
-    fontWeight,
+    margin,
+    fS,
+    fW,
     color,
     userSelect,
     display,
@@ -23,9 +24,9 @@ Text.defaultProps = {
 }
 
 const StyledText = styled.div`
-  display: ${props => props.display};
-  font-size: ${props => props.fontSize};
-  font-weight: ${props => props.fontWeight};
+  margin: ${props => props.margin};
+  font-size: ${props => props.fS};
+  font-weight: ${props => props.fW};
   color: ${props => props.color};
   user-select: ${props => props.userSelect};
 `;
