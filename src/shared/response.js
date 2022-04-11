@@ -39,13 +39,13 @@ export const RESP = {
         totaltime: 1000,
         yestime: 120,
         starttime: "2022-04-09 10:00:00",
-        connecting: false,
+        connecting: true,
       },
       testid3: {
         userid: "testid3",
         nickname: "testname3",
         user_image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR20IORmNDNcRa_FOEBKPVI3ano6fLVIiJB_g&usqp=CAU",
+          "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAzMTZfMTA0%2FMDAxNjQ3NDA2NDIzNjE2.lpZyIMgtGqvA9AWj-mcVEiCpjRgnnn1kpaK7vpl5jB0g.EwPaLt5yfY6D_cir3txg6QDtNrVtN9GYc4Ysa0OkOo0g.JPEG.leehyela71%2F17.JPG&type=a340",
         friends: ["testid2"],
         totaltime: 1000,
         yestime: 120,
