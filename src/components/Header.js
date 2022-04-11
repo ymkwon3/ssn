@@ -17,7 +17,7 @@ const Header = props => {
   }
 
   return (
-    <Flex margin="20px auto " padding="10px" jc="space-between" border="1px solid black">
+    <Flex jc="space-between" border="1px solid black">
       <CircleImage></CircleImage>
       <Input
         width="400px"

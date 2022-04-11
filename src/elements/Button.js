@@ -39,13 +39,22 @@ const Buttonstyle = styled.button`
   margin: ${props => props.margin};
   padding: ${props => props.padding};
   width: ${props => props.width};
+  height: ${props => props.height};
+
   color: ${props => props.color};
   background-color: ${props => props.bg};
+
   right: ${props => props.right};
   left: ${props => props.left};
   border: none;
   align-items: ${props => props.ai};
-  height: ${props => props.height};
+
+  font-weight: bold;
+  
+  cursor: pointer;
+  &:hover {
+    
+  }
 `;
 
 export default Button;

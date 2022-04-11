@@ -1,6 +1,8 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
+
 import { RESP } from "../../shared/response";
+import axios from "axios";
 
 // actions
 const LOG_OUT = "LOG_OUT";
@@ -20,9 +22,12 @@ const initialState = {
 const loginMD = (id, pwd) => {
   return async function (dispatch, getState, { history }) {
     // 로그인 미들웨어
+
     // Mock API
     const userinfo = RESP.LOGIN.result.userinfo;
 
+    // axios
+    // const userinfo = await axios.post('url', {id: id, password: pwd}).then();
 
     dispatch(setUser(userinfo));
     history.replace("/");
@@ -41,7 +46,8 @@ export default handleActions(
       produce(state, draft => {
         draft.userinfo = action.payload.user;
       }),
-      [LOG_OUT]: (state, action) =>
+
+    [LOG_OUT]: (state, action) =>
       produce(state, draft => {
         draft.userinfo = null;
       }),
@@ -52,6 +58,7 @@ export default handleActions(
 const actionCreators = {
   logout,
   loginMD,
+  signUpMD,
 };
 
 export { actionCreators };

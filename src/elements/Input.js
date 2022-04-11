@@ -18,7 +18,6 @@ const Input = props => {
         width,
         height,
         type,
-        placeholder: ph,
         padding,
         label,
         // 있는 정보를 가져오기 위한
@@ -27,7 +26,7 @@ const Input = props => {
         <InputStyle 
             {...styles}
             type = {type}
-            ph = {ph}
+            placeholder = {ph}
         />
     );
 };
