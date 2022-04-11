@@ -48,7 +48,7 @@ Flex.defaultProps = {
   fd: "row",
   jc: "center",
   ai: "center",
-  bg: "#666",
+  bg: "#eee",
 };
 
 const FlexDiv = styled.div`

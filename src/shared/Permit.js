@@ -17,7 +17,6 @@ const Permit = props => {
     return <>{props.children}</>;
   }
 
-  
   return <></>;
 };
 //로그인 유무에 따라 true false 줄 예정
