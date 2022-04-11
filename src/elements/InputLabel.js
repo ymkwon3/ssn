@@ -1,23 +1,50 @@
 import React from "react";
 import styled from "styled-components";
+import Text from "./Text";
 
-const InputLabel = props => {
-  const { type, label, width, height, padding, fontSize, bg } = props;
-  const styles = { width, height, padding, fontSize, bg };
+const InputLabel = React.forwardRef((props, ref) => {
+  const {
+    type,
+    label,
+    width,
+    height,
+    padding,
+    fontSize,
+    bg,
+    color,
+    border,
+    subText,
+    _onBlur,
+  } = props;
+  const styles = { width, height, padding, fontSize, bg, color, border };
   return (
     <InputContainer {...styles}>
-      <input type={type} placeholder=" " autoComplete="off" />
+      <input
+        ref={el => ref?.current.push(el)}
+        type={type}
+        placeholder=" "
+        autoComplete="off"
+        onBlur={_onBlur}
+      />
       <label>{label}</label>
+      <Text fontSize="12px" display={subText ? null : "none"}>
+        {subText}
+      </Text>
     </InputContainer>
   );
-};
+});
 
 InputLabel.defaultProps = {
   padding: 0,
   fontSize: "16px",
+  border: "2px solid #0e487a",
+  _onBlur: () => {},
 };
 
 const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   width: ${props => props.width};
   height: ${props => props.height};
@@ -28,31 +55,31 @@ const InputContainer = styled.div`
     height: 100%;
     padding: ${props => props.padding};
     outline: none;
-    border: 1px solid #fff;
-    /* border-bottom: 1px solid #fff; */
+    border: ${props => props.border};
     background-color: transparent;
-    color: #fff;
-  }
-  & > input::-ms-reveal {
-    filter: invert(100%);
+    color: ${props => props.color};
   }
 
   & > label {
     font-size: ${props => props.fontSize};
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     background-color: ${props => props.bg};
     left: ${props => props.padding};
     top: ${props => props.padding};
     transition: 0.2s;
     user-select: none;
-    color: #fff;
+    color: ${props => props.color};
   }
 
   & > input:focus + label,
   & > input:not(:placeholder-shown) + label {
     transform: translateY(-${props => props.padding}) translateY(-50%)
       translateX(-${props => props.padding}) scale(0.75);
+  }
+
+  & > div {
+    color: red;
   }
 `;
 

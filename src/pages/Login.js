@@ -12,8 +12,11 @@ import { history } from "../redux/configureStore";
 
 const Login = props => {
   const dispatch = useDispatch();
+  const ref = React.useRef([]);
 
   const loginBtn = () => {
+    const id = ref.current[0].value;
+    const pwd = ref.current[1].value;
     dispatch(userActions.loginMD("id", "pwd"));
   };
 
@@ -23,27 +26,54 @@ const Login = props => {
 
   return (
     <>
-      <Flex fd="column" width="400px" gap="40px" padding="40px" bg="#0e487a">
-        <Text fontSize="20px" fontWeight="bold" userSelect="none">로그인</Text>
+      <Flex
+        fd="column"
+        width="400px"
+        gap="40px"
+        padding="40px"
+        border="2px solid #0e487a"
+      >
+        <Text fontSize="20px" fontWeight="bold" userSelect="none">
+          로그인
+        </Text>
         <InputLabel
           type="text"
           label="아이디"
           width="60%"
           padding="10px"
-          fontSize="20px"
-          bg="#0e487a"
+          fontSize="16px"
+          color="#0e487a"
+          bg="#eee"
+          ref={ref}
         ></InputLabel>
         <InputLabel
           type="password"
           label="비밀번호"
           width="60%"
           padding="10px"
-          fontSize="12px"
-          bg="#0e487a"
+          fontSize="16px"
+          color="#0e487a"
+          bg="#eee"
+          ref={ref}
         ></InputLabel>
 
-        <Button width="200px" bg="#fff" color="#0e487a" _onClick={() => loginBtn()}>로그인</Button>
-        <Button width="200px" bg="transparent" _onClick={() => signUpBtn()}>아직도 회원이 아니신가요?</Button>
+        <Button
+          width="200px"
+          bg="#0e487a"
+          color="#eee"
+          height="40px"
+          _onClick={() => loginBtn()}
+        >
+          로그인
+        </Button>
+        <Button
+          width="220px"
+          bg="transparent"
+          color="#0e487a"
+          _onClick={() => signUpBtn()}
+        >
+          아직도 회원이 아니신가요?
+        </Button>
       </Flex>
     </>
   );
