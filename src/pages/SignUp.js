@@ -13,7 +13,8 @@ const SignUp = props => {
   const dispatch = useDispatch();
 
   const signUpBtn = () => {
-    console.log("회원가입버튼스니펫 딸깍!");
+    console.log("회원가입버튼스니펫 딸깍!222");
+    
     // dispatch(userActions.signUpMD("id", "pwd", "name"));
   };
 
