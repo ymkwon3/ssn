@@ -25,7 +25,7 @@ const loginMD = (id, pwd) => {
 
 
     dispatch(setUser(userinfo));
-    history.replace("/");
+    history.push("/");
   };
 };
 
