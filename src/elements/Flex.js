@@ -10,6 +10,9 @@ const Flex = props => {
     margin,
     padding,
     border,
+    borderR,
+    borderBottom,
+    boxS,
     gap,
     position,
     trbl,
@@ -17,7 +20,10 @@ const Flex = props => {
     jc,
     ai,
     bg,
+    zIndex,
+    overflow,
     children,
+    _onClick,
   } = props;
   const styles = {
     width,
@@ -25,6 +31,9 @@ const Flex = props => {
     margin,
     padding,
     border,
+    borderR,
+    borderBottom,
+    boxS,
     gap,
     position,
     trbl,
@@ -32,8 +41,10 @@ const Flex = props => {
     jc,
     ai,
     bg,
+    zIndex,
+    overflow,
   };
-  return <FlexDiv {...styles}>{children}</FlexDiv>;
+  return <FlexDiv onClick={_onClick} {...styles}>{children}</FlexDiv>;
 };
 
 Flex.defaultProps = {
@@ -42,13 +53,19 @@ Flex.defaultProps = {
   margin: "",
   padding: "",
   border: "none",
+  borderR: '8px',
+  borderBottom: "none",
+  boxS: "none",
   gap: "",
   position: "static",
   trbl: ["", "", "", ""],
   fd: "row",
   jc: "center",
   ai: "center",
-  bg: "#eee",
+  bg: "transparent",
+  zIndex: "0",
+  overflow: "visible",
+  _onClick: () => {},
 };
 
 const FlexDiv = styled.div`
@@ -57,7 +74,11 @@ const FlexDiv = styled.div`
   margin: ${props => props.margin};
   padding: ${props => props.padding};
   border: ${props => props.border};
+  border-radius: ${props => props.borderR};
+  border-bottom: ${props => props.borderBottom};
+  box-shadow: ${props => props.boxS};
   gap: ${props => props.gap};
+  z-index: ${props => props.zIndex};
   position: ${props => props.position};
   top: ${props => props.trbl[0]};
   right: ${props => props.trbl[1]};
@@ -68,6 +89,8 @@ const FlexDiv = styled.div`
   justify-content: ${props => props.jc};
   align-items: ${props => props.ai};
   background-color: ${props => props.bg};
+  overflow: ${props => props.overflow};
+  transition: 0.2s;
 `;
 
 export default Flex;

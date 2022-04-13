@@ -4,20 +4,38 @@ import Timer from "./Timer";
 
 import Rank from "./Rank";
 import Permit from "../shared/Permit";
+import Text from "../elements/Text";
 
 const Main = props => {
+  
   return (
-    <Permit toLogin={props.userinfo ? false : true}>
-      <Flex border="2px solid blue" height="100%" fd="column" jc="space-around">
+      <Flex height="100%" borderR="0" fd="column" jc="space-around">
         <Timer></Timer>
-        <Flex border="2px solid purple">총공부시간 / 어제 몇시간 했네~</Flex>
-        <Flex border="2px solid orange">
+
+        <Flex
+          width="600px"
+          height="100px"
+          fd="column"
+          gap="20px"
+          bg="#323542"
+          zIndex="1"
+          boxS="rgba(0, 0, 0, 0.2) 0px 5px 10px;"
+        >
+          <Text fontSize="24px">총"{props.userinfo?.totalTime}"시간 달려왔습니다!</Text>
+        </Flex>
+        <Flex
+          width="1000px"
+          height="300px"
+          gap="20px"
+          bg="#323542"
+          zIndex="1"
+          boxS="rgba(0, 0, 0, 0.2) 0px 5px 10px;"
+        >
           <Rank></Rank>
           <Rank></Rank>
           <Rank></Rank>
         </Flex>
       </Flex>
-    </Permit>
   );
 };
 

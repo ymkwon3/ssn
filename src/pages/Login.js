@@ -1,7 +1,6 @@
 import React from "react";
 
 import Flex from "../elements/Flex";
-import Input from "../elements/Input";
 import Button from "../elements/Button";
 import InputLabel from "../elements/InputLabel";
 
@@ -9,6 +8,7 @@ import { actionCreators as userActions } from "../redux/modules/user";
 import { useDispatch } from "react-redux";
 import Text from "../elements/Text";
 import { history } from "../redux/configureStore";
+import { removeSession } from "../shared/Session";
 
 const Login = props => {
   const dispatch = useDispatch();
@@ -17,12 +17,16 @@ const Login = props => {
   const loginBtn = () => {
     const id = ref.current[0].value;
     const pwd = ref.current[1].value;
-    dispatch(userActions.loginMD("id", "pwd"));
+    dispatch(userActions.loginMD(id, pwd));
   };
 
   const signUpBtn = () => {
     history.push("/signup");
   };
+
+  React.useEffect(() => {
+    removeSession();
+  }, [])
 
   return (
     <>
@@ -30,10 +34,11 @@ const Login = props => {
         fd="column"
         width="400px"
         gap="40px"
+        bg="#323542"
         padding="40px"
-        border="2px solid #0e487a"
+      boxS="rgba(0, 0, 0, 0.2) 0px 5px 10px;"
       >
-        <Text fontSize="20px" fontWeight="bold" userSelect="none">
+        <Text fontSize="24px" fontWeight="bold" userSelect="none">
           로그인
         </Text>
         <InputLabel
@@ -42,8 +47,8 @@ const Login = props => {
           width="60%"
           padding="10px"
           fontSize="16px"
-          color="#0e487a"
-          bg="#eee"
+          color="#eee"
+          bg="#323542"
           ref={ref}
         ></InputLabel>
         <InputLabel
@@ -52,15 +57,13 @@ const Login = props => {
           width="60%"
           padding="10px"
           fontSize="16px"
-          color="#0e487a"
-          bg="#eee"
+          color="#eee"
+          bg="#323542"
           ref={ref}
         ></InputLabel>
 
         <Button
           width="200px"
-          bg="#0e487a"
-          color="#eee"
           height="40px"
           _onClick={() => loginBtn()}
         >
@@ -69,7 +72,7 @@ const Login = props => {
         <Button
           width="220px"
           bg="transparent"
-          color="#0e487a"
+          fontSize="14px"
           _onClick={() => signUpBtn()}
         >
           아직도 회원이 아니신가요?

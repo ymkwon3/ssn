@@ -8,6 +8,8 @@ const Button = props => {
     width,
     height,
     color,
+    border,
+    borderR,
     bg,
     _onClick,
     children,
@@ -23,6 +25,8 @@ const Button = props => {
     width,
     height,
     color,
+    border,
+    borderR,
     bg,
     _onClick,
     right,
@@ -42,10 +46,12 @@ Button.defaultProps = {
   margin: "",
   width: "100%",
   height: "",
-  color: "#EAEAEA",
+  color: "#eee",
   padding: "5px",
-  bg: "#8C8C8C",
+  bg: "#35a0b8",
   fontSize: "16px",
+  border: "none",
+  borderR: "8px",
   _onClick: () => {},
 };
 
@@ -54,6 +60,8 @@ const Buttonstyle = styled.button`
   padding: ${props => props.padding};
   width: ${props => props.width};
   height: ${props => props.height};
+  border: ${props => props.border};
+  border-radius: ${props => props.borderR};
 
   color: ${props => props.color};
   background-color: ${props => props.bg};
@@ -61,7 +69,6 @@ const Buttonstyle = styled.button`
   right: ${props => props.right};
   left: ${props => props.left};
   align-items: ${props => props.ai};
-  border: none;
 
   font-weight: bold;
   font-size: ${props => props.fontSize};

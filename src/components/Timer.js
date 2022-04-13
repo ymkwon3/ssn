@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../elements/Button";
 import Flex from "../elements/Flex";
+import Text from "../elements/Text";
 import { actionCreators as userActions } from "../redux/modules/user";
 
 const Timer = props => {
@@ -12,7 +13,7 @@ const Timer = props => {
     minute = 0,
     second = 0;
   if (user.connecting) {
-    const start = moment(user.starttime);
+    const start = moment(user.startTime);
     const now = moment();
     const duration = moment.duration(now.diff(start));
 
@@ -23,7 +24,7 @@ const Timer = props => {
     d %= 60;
     second = Math.floor(d);
   }
-  const [time, setTime] = React.useState(-99999);
+  const [time, setTime] = React.useState(-9999999);
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(prev => prev + 1);
@@ -46,9 +47,17 @@ const Timer = props => {
   };
 
   return (
-    <Flex border="2px solid purple" fd="column" gap="20px">
-      {`${hour}시간 ${minute}분 ${second}초`}
-      <Button width="200px" _onClick={() => checkInOut()}>
+    <Flex
+      width="600px"
+      height="300px"
+      fd="column"
+      gap="20px"
+      bg="#323542"
+      zIndex="1"
+      boxS="rgba(0, 0, 0, 0.2) 0px 5px 10px;"
+    >
+      <Text fontSize="52px">{`${hour}시간 ${minute}분 ${second}초`}</Text>
+      <Button width="200px" height="50px" _onClick={() => checkInOut()}>
         출석체크
       </Button>
     </Flex>
