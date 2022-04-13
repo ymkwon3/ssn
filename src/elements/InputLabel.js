@@ -27,7 +27,7 @@ const InputLabel = React.forwardRef((props, ref) => {
         onBlur={_onBlur}
       />
       <label>{label}</label>
-      <Text fontSize="12px" display={subText ? null : "none"}>
+      <Text fS="12px" display={subText ? null : "none"}>
         {subText}
       </Text>
     </InputContainer>
@@ -37,7 +37,7 @@ const InputLabel = React.forwardRef((props, ref) => {
 InputLabel.defaultProps = {
   padding: 0,
   fontSize: "16px",
-  border: "2px solid #0e487a",
+  border: "2px solid #eee",
   _onBlur: () => {},
 };
 
@@ -56,6 +56,7 @@ const InputContainer = styled.div`
     padding: ${props => props.padding};
     outline: none;
     border: ${props => props.border};
+    border-radius: 8px;
     background-color: transparent;
     color: ${props => props.color};
   }
@@ -72,14 +73,26 @@ const InputContainer = styled.div`
     color: ${props => props.color};
   }
 
+  & > input:focus, & > input:not(:placeholder-shown) {
+    border: 2px solid #35a0b8;
+    outline: 2px solid #35a0b8;
+  }
+
   & > input:focus + label,
   & > input:not(:placeholder-shown) + label {
     transform: translateY(-${props => props.padding}) translateY(-50%)
-      translateX(-${props => props.padding}) scale(0.75);
+      translateX(-${props => props.padding}) scale(0.8);
+      color: #35a0b8;
+      font-weight: bold;
+  }
+
+  & > input::-ms-reveal {
+    filter: invert();
   }
 
   & > div {
-    color: red;
+    margin-top: 10px;
+    color: #ff5040;
   }
 `;
 

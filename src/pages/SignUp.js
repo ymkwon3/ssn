@@ -7,23 +7,30 @@ import InputLabel from "../elements/InputLabel";
 import { actionCreators as userActions } from "../redux/modules/user";
 import { useDispatch } from "react-redux";
 import Text from "../elements/Text";
+import axios from "axios";
+import { api } from "../shared/api";
+import { removeSession } from "../shared/Session";
 
 const SignUp = props => {
   const dispatch = useDispatch();
   const ref = React.useRef([]);
-  const [check, setCheck] = React.useState({
+  const [checks, setCheck] = React.useState({
     idSubText: null,
     nameSubText: null,
     pwdSubText: null,
     pwdcSubText: null,
   });
 
-  const {idSubText, nameSubText, pwdSubText, pwdcSubText} = check;
+  React.useEffect(() => {
+    removeSession();
+  }, [])
+
+  const { idSubText, nameSubText, pwdSubText, pwdcSubText } = checks;
 
   const space_pattern = /\s/g; // 공백 확인 정규표현식
 
   // 회원가입버튼 이벤트
-  const signUpBtn = async() => {
+  const signUpBtn = async () => {
     console.log("회원가입버튼 딸깍!");
     const id = ref.current[0].value;
     const name = ref.current[1].value;
@@ -40,42 +47,52 @@ const SignUp = props => {
 
     // 비밀번호 일치 여부 확인
     if (pwd !== pwdc) {
-      setCheck({ ...check, pwdcSubText: "비밀번호가 일치하지 않습니다!" });
+      setCheck({ ...checks, pwdcSubText: "비밀번호가 일치하지 않습니다!" });
       return;
     } else {
-      setCheck({ ...check, pwdcSubText: null });
+      setCheck({ ...checks, pwdcSubText: null });
     }
 
     // 어떠한 조건이 성립이 안됐을때
-    if(idSubText || nameSubText || pwdSubText || pwdcSubText){
+    if (idSubText || nameSubText || pwdSubText || pwdcSubText) {
       window.alert("입력칸을 확인해주세요!");
       return;
     }
 
-    // dispatch(userActions.signUpMD("id", "pwd", "name"));
+    dispatch(userActions.signUpMD(id, pwd, name));
   };
 
   // 아이디 중복 확인
-  const idCheck = () => {
+  const idCheck = async () => {
     // axios 아이디 중복 체크
     const id = ref.current[0].value;
-    if (false) setCheck({ ...check, idSubText: "중복된 아이디입니다!" });
-    else setCheck({ ...check, idSubText: null });
+    let check = false;
+    api.post_idCheck(id).then(res => {
+      check = res;
+      if (!check) setCheck({ ...checks, idSubText: "중복된 아이디입니다!" });
+      else setCheck({ ...checks, idSubText: null });
+    });
   };
 
   // 닉네임 중복 확인
-  const nameCheck = () => {
+  const nameCheck = async () => {
     // axios 닉네임 중복 체크
     const name = ref.current[1].value;
-    if (false) setCheck({ ...check, nameSubText: "중복된 닉네임입니다!" });
-    else setCheck({ ...check, nameSubText: null });
+    let check = false;
+    api.post_idCheck(name).then(res => {
+      check = res;
+      if (!check) setCheck({ ...checks, nameSubText: "중복된 닉네임입니다!" });
+      else setCheck({ ...checks, nameSubText: null });
+    });
   };
+
 
   // 비밀번호 길이 확인
   const pwdCheck = () => {
     const pwd = ref.current[2].value;
-    if (pwd.length < 4) setCheck({ ...check, pwdSubText: "비밀번호 길이는 4자이상!" });
-    else setCheck({ ...check, pwdSubText: null });
+    if (pwd.length < 4)
+      setCheck({ ...checks, pwdSubText: "비밀번호 길이는 4자이상!" });
+    else setCheck({ ...checks, pwdSubText: null });
   };
 
   return (
@@ -84,10 +101,11 @@ const SignUp = props => {
         fd="column"
         width="400px"
         gap="40px"
+        bg="#323542"
         padding="40px"
-        border="2px solid #0e487a"
+        boxS="rgba(0, 0, 0, 0.2) 0px 5px 10px;"
       >
-        <Text fontSize="20px" fontWeight="bold" userSelect="none">
+        <Text fontSize="24px" fontWeight="bold" userSelect="none">
           회원가입
         </Text>
         <InputLabel
@@ -96,8 +114,8 @@ const SignUp = props => {
           width="60%"
           height="40px"
           padding="10px"
-          bg="#eee"
-          color="#0e487a"
+          color="#eee"
+          bg="#323542"
           ref={ref}
           subText={idSubText}
           _onBlur={idCheck}
@@ -108,8 +126,8 @@ const SignUp = props => {
           width="60%"
           height="40px"
           padding="10px"
-          bg="#eee"
-          color="#0e487a"
+          color="#eee"
+          bg="#323542"
           ref={ref}
           subText={nameSubText}
           _onBlur={nameCheck}
@@ -120,8 +138,8 @@ const SignUp = props => {
           width="60%"
           height="40px"
           padding="10px"
-          bg="#eee"
-          color="#0e487a"
+          color="#eee"
+          bg="#323542"
           ref={ref}
           subText={pwdSubText}
           _onBlur={pwdCheck}
@@ -132,19 +150,13 @@ const SignUp = props => {
           width="60%"
           height="40px"
           padding="10px"
-          bg="#eee"
-          color="#0e487a"
+          color="#eee"
+          bg="#323542"
           ref={ref}
           subText={pwdcSubText}
         ></InputLabel>
 
-        <Button
-          width="200px"
-          height="40px"
-          bg="#0e487a"
-          color="#eee"
-          _onClick={() => signUpBtn()}
-        >
+        <Button width="200px" height="40px" _onClick={() => signUpBtn()}>
           회원가입
         </Button>
       </Flex>

@@ -12,7 +12,7 @@ export const RESP = {
         friends: ["testid2", "testid3"],
         totaltime: 1000,
         yestime: 120,
-        starttime: "2022-04-09 10:00:00",
+        starttime: "",
         connecting: false,
       },
     },

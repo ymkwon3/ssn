@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 const Text = props => {
-  const {margin, fS, fW, color, userSelect, children} = props;
+  const {width, display, margin, fontSize, fontWeight, color, userSelect, textAlign, children} = props;
   const styles = {
+    width,
     margin,
-    fS,
-    fW,
+    fontSize,
+    fontWeight,
+    textAlign,
     color,
     userSelect,
     display,
@@ -18,17 +20,24 @@ const Text = props => {
 };
 
 Text.defaultProps = {
-  color: "#0e487a",
+  color: "#eee",
   userSelect: "text",
-  display: "static",
+  display: "block",
+  fontSize: "12xp",
+  fontWeight: "normal",
+  textAlign: "start",
+  width: "auto",
 }
 
 const StyledText = styled.div`
+  display: ${props => props.display};
   margin: ${props => props.margin};
-  font-size: ${props => props.fS};
-  font-weight: ${props => props.fW};
+  font-size: ${props => props.fontSize};
+  font-weight: ${props => props.fontWeight};
   color: ${props => props.color};
   user-select: ${props => props.userSelect};
+  width: ${props => props.width};
+  text-align: ${props => props.textAlign};
 `;
 
 export default Text;

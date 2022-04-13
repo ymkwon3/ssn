@@ -1,35 +1,31 @@
 import React from "react";
 
-import axios from "axios";
 import CircleImage from "../elements/CircleImage";
 import Text from "../elements/Text";
-import {RESP} from "../shared/response"
-import { useSelector } from "react-redux";
-import CntIcon from "../elements/CntIcon";
-import Flex from "../elements/Flex"
+import Flex from "../elements/Flex";
+import { BsDot } from "react-icons/bs";
+import { history } from "../redux/configureStore";
 
 const FriendsInfo = props => {
-    return (
-        <React.Fragment>
-            <Flex jc="flex-start">
-                <CircleImage src={props.user_image} size="40"/>
-                
-                <Text 
-                    key={props.nickname} 
-                    fS="10px" 
-                    color="black" 
-                    margin="0 10px 0 0" 
-                >
-                    {props.nickname} 
-                </Text>
-                {props.connecting === true
-                ? <CntIcon key={props.connecting} />
-                : null
-                }
-                
-            </Flex>
-        </React.Fragment>
-    );
+
+  const friendClick = () => {
+    history.push(`/user/${props.userId}`)
+  }
+
+  return (
+    <Flex jc="flex-start" bg="transparent" padding="0 0 0 60px" 
+    borderBottom="1px solid #282936" borderR="0" _onClick={friendClick}>
+      <CircleImage src={props.userImage} size="40" />
+      {props.connecting === true ? (
+        <BsDot color="lightgreen" size={40} />
+      ) : (
+        <BsDot color="red" size={40} />
+      )}
+      <Text display={props.isMenu ? "block" : "none"}>
+        {props.nickName}
+      </Text>
+    </Flex>
+  );
 };
 
 export default FriendsInfo;
