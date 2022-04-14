@@ -5,6 +5,7 @@ const Flex = props => {
   // fd: flex-direction, jc: justify-content, ai: align-items, bg: background-color -영민
   // trbl is a list with top, right, bottom, left properties in order -영민
   const {
+    color,
     width,
     height,
     margin,
@@ -24,8 +25,10 @@ const Flex = props => {
     overflow,
     children,
     _onClick,
+    className,
   } = props;
   const styles = {
+    color,
     width,
     height,
     margin,
@@ -44,7 +47,11 @@ const Flex = props => {
     zIndex,
     overflow,
   };
-  return <FlexDiv onClick={_onClick} {...styles}>{children}</FlexDiv>;
+  return (
+    <FlexDiv onClick={_onClick} {...styles} className={className}>
+      {children}
+    </FlexDiv>
+  );
 };
 
 Flex.defaultProps = {
@@ -53,7 +60,7 @@ Flex.defaultProps = {
   margin: "",
   padding: "",
   border: "none",
-  borderR: '8px',
+  borderR: "8px",
   borderBottom: "none",
   boxS: "none",
   gap: "",
@@ -90,6 +97,7 @@ const FlexDiv = styled.div`
   align-items: ${props => props.ai};
   background-color: ${props => props.bg};
   overflow: ${props => props.overflow};
+  color: ${props => props.color};
   transition: 0.2s;
 `;
 

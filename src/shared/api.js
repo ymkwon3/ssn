@@ -105,9 +105,9 @@ const post_idCheck = async userId => {
 };
 
 // 닉네임 중복확인
-const post_nameCheck = async (userId) => {
+const post_nameCheck = async (nickName) => {
   const result = await axios
-    .post(`${URL}/api/nickCheck`, { userId })
+    .post(`${URL}/api/nickCheck`, { nickName })
     .then(res => {
       const result = res.data.result === "true" ? true : false;
       return result;
@@ -162,11 +162,11 @@ const get_comment = async (userId) => {
 };
 
 // 방명록 등록
-const post_comment = async (userId, date, content, writer) => {
+const post_comment = async (userId, nickName, date, content, writer) => {
   const headers = h();
   
   const result = await axios
-    .post(`${URL}/api/${userId}/comments`, { userId, date, content, writer }, { headers })
+    .post(`${URL}/api/${userId}/comments`, { userId, nickName, date, content, writer }, { headers })
     .then(res => {
       return res.data.comment;
     })
@@ -174,6 +174,33 @@ const post_comment = async (userId, date, content, writer) => {
       console.log(err);
     });
   return result;
+};
+
+// 방명록 삭제
+const delete_comment = async (userId, commentId) => {
+  const headers = h();
+  const result = await axios
+    .delete(`${URL}/api/${userId}/comments`, { headers, data: { userId, commentId }})
+    .then(res => {
+      // return res.data;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  // return result;
+};
+
+// 상태메세지 수정
+const post_status = async (userId, statusMeg) => {
+  const headers = h();
+  const result = await axios
+    .post(`${URL}/api/${userId}/status`, { userId, statusMeg }, { headers })
+    .then(res => {
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  // return result;
 };
 
 const api = {
@@ -187,7 +214,9 @@ const api = {
   post_checkOut,
   get_autoLogin,
   get_comment,
-  post_comment
+  post_comment,
+  delete_comment,
+  post_status,
 };
 
 export { api };

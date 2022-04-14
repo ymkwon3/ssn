@@ -13,7 +13,7 @@ const FriendsInfo = props => {
   }
 
   return (
-    <Flex jc="flex-start" bg="transparent" padding="0 0 0 60px" 
+    <Flex className="hoverClick" jc="flex-start" bg="transparent" padding="0 0 0 60px"
     borderBottom="1px solid #282936" borderR="0" _onClick={friendClick}>
       <CircleImage src={props.userImage} size="40" />
       {props.connecting === true ? (

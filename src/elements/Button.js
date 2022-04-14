@@ -73,8 +73,11 @@ const Buttonstyle = styled.button`
   font-weight: bold;
   font-size: ${props => props.fontSize};
 
+  transition: 0.2s;
+
   cursor: pointer;
   &:hover {
+    background-color: #358ab8;
   }
 `;
 
