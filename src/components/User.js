@@ -48,6 +48,7 @@ const User = props => {
   React.useEffect(() => {
     // user페이지에서 별도의 이동 없이 보고자 하는 친구를 바꿨을 경우
     dispatch(userActions.getCommentMD(userId));
+    
   }, [userId]);
 
   return (

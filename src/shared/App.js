@@ -13,11 +13,9 @@ import Main from "../components/Main";
 import Permit from "./Permit";
 import User from "../components/User";
 import SideNav from "../components/SideNav";
-import { actionCreators as userActions } from "../redux/modules/user";
 import SignUp from "../pages/SignUp";
 
 function App() {
-  const dispatch = useDispatch();
   // 나중에 로그인 관련 세션?이 추가되면 그쪽으로 바꿔야 될듯 -영민
   const userinfo = useSelector(state => state.user.userinfo);
   const [isMenu, isMenuState] = React.useState(false);
