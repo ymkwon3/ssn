@@ -27,7 +27,7 @@ const InputLabel = React.forwardRef((props, ref) => {
         onBlur={_onBlur}
       />
       <label>{label}</label>
-      <Text fS="12px" display={subText ? null : "none"}>
+      <Text fontSize="12px" display={subText ? null : "none"}>
         {subText}
       </Text>
     </InputContainer>

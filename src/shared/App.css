@@ -5,3 +5,22 @@
 *::-webkit-scrollbar {
   display: none;
 }
+
+.hoverEvent {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.hoverEvent:hover {
+  transform: scale(1.1);
+}
+
+.hoverClick {
+  user-select: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.hoverClick:hover {
+  background-color: #282936;
+}

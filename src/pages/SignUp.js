@@ -79,7 +79,7 @@ const SignUp = props => {
     // axios 닉네임 중복 체크
     const name = ref.current[1].value;
     let check = false;
-    api.post_idCheck(name).then(res => {
+    api.post_nameCheck(name).then(res => {
       check = res;
       if (!check) setCheck({ ...checks, nameSubText: "중복된 닉네임입니다!" });
       else setCheck({ ...checks, nameSubText: null });

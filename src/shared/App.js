@@ -41,6 +41,7 @@ function App() {
             {/* Header */}
             <Header
               userId={userinfo?.userId}
+              userImage={userinfo?.userImage}
               nickName={userinfo?.nickName}
               _isMenu={menuBtn}
             ></Header>

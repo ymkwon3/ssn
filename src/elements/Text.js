@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 const Text = props => {
-  const {width, display, margin, fontSize, fontWeight, color, userSelect, textAlign, children} = props;
+  const {borderR, bg, padding, disabled, width, display, margin, fontSize, fontWeight, color, userSelect, textAlign, children} = props;
   const styles = {
     width,
     margin,
@@ -10,7 +10,11 @@ const Text = props => {
     textAlign,
     color,
     userSelect,
+    borderR,
     display,
+    disabled,
+    padding,
+    bg,
   }
   return (
     <StyledText {...styles}>
@@ -27,6 +31,7 @@ Text.defaultProps = {
   fontWeight: "normal",
   textAlign: "start",
   width: "auto",
+  className: "",
 }
 
 const StyledText = styled.div`
@@ -38,6 +43,10 @@ const StyledText = styled.div`
   user-select: ${props => props.userSelect};
   width: ${props => props.width};
   text-align: ${props => props.textAlign};
+  padding: ${props => props.padding};
+  background-color: ${props => props.bg};
+  border-radius: ${props => props.borderR};
+  ${props => props.disabled ? "user-select: none" : ''};
 `;
 
 export default Text;
