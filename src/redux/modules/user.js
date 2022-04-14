@@ -2,9 +2,7 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 
 import moment from "moment";
-import { RESP } from "../../shared/response";
-import axios from "axios";
-import { setSession, removeSession } from "../../shared/Session";
+import { removeSession } from "../../shared/Session";
 import { api } from "../../shared/api";
 
 // actions
@@ -41,7 +39,6 @@ const initialState = {
 const loginMD = (id, pwd) => {
   return async function (dispatch, getState, { history }) {
     // 로그인 미들웨어
-
     api.post_login(id, pwd).then(res1 => {
       dispatch(setUser(res1));
       api.get_friend(res1.userId).then(res2 => {
@@ -49,7 +46,6 @@ const loginMD = (id, pwd) => {
         history.replace("/");
       });
     });
-
   };
 };
 

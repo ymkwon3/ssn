@@ -17,6 +17,7 @@ const InputLabel = React.forwardRef((props, ref) => {
     _onBlur,
   } = props;
   const styles = { width, height, padding, fontSize, bg, color, border };
+
   return (
     <InputContainer {...styles}>
       <input

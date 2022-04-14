@@ -7,13 +7,16 @@ import InputLabel from "../elements/InputLabel";
 import { actionCreators as userActions } from "../redux/modules/user";
 import { useDispatch } from "react-redux";
 import Text from "../elements/Text";
-import axios from "axios";
 import { api } from "../shared/api";
 import { removeSession } from "../shared/Session";
 
 const SignUp = props => {
   const dispatch = useDispatch();
+
+  // ref 리스트형태 사용
   const ref = React.useRef([]);
+
+  // state 객체형태 사용
   const [checks, setCheck] = React.useState({
     idSubText: null,
     nameSubText: null,
@@ -31,7 +34,6 @@ const SignUp = props => {
 
   // 회원가입버튼 이벤트
   const signUpBtn = async () => {
-    console.log("회원가입버튼 딸깍!");
     const id = ref.current[0].value;
     const name = ref.current[1].value;
     const pwd = ref.current[2].value;
